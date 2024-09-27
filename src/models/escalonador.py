@@ -7,7 +7,7 @@ class Escalonador:
         pass
 
     def chamar_despachante(self):
-        
+        pass
         
 
     def add_fila_processo(self, processo, tipo_algoritimo: str):
