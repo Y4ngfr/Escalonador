@@ -28,7 +28,7 @@
           <mxGeometry y="138" width="160" height="28" as="geometry" />
         </mxCell>
         <mxCell id="TjPRDaiVUzfOcdr2Qloe-1" value="Escalonador" style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="450" y="130" width="160" height="120" as="geometry">
+          <mxGeometry x="450" y="130" width="160" height="146" as="geometry">
             <mxRectangle x="230" y="140" width="160" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -43,6 +43,9 @@
         </mxCell>
         <mxCell id="TjPRDaiVUzfOcdr2Qloe-9" value="&amp;nbsp;+ atualizar_fila" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="TjPRDaiVUzfOcdr2Qloe-1">
           <mxGeometry y="86" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="TjPRDaiVUzfOcdr2Qloe-18" value="&amp;nbsp;+ chamar_despachante" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="TjPRDaiVUzfOcdr2Qloe-1">
+          <mxGeometry y="116" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="TjPRDaiVUzfOcdr2Qloe-11" value="Despanchante   " style="swimlane;fontStyle=2;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="300" y="360" width="160" height="80" as="geometry">
