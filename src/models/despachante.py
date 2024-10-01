@@ -1,6 +1,8 @@
 import time
 import random
 import processo
+import escalonador
+
 class Despachante:
     def executar_processo(self, processo: processo.Processo):
         while(processo.estado == "EXECUTANDO"):
@@ -10,6 +12,9 @@ class Despachante:
                 break
 
             processo.verificacao_entra_saida()
+
+            if processo.estado == "ESPERANDO":
+                break
             
-            processo.tempo_execucao -= 1
+            processo.executa()
             time.sleep(1)
