@@ -1,11 +1,13 @@
 import random
 
 class Processo:
+    id_estatico = 0
     def __init__(self):
-        self.id = 0
-        self.tempo_execucao = 0 # milissegundos
-        self.estado = "" # EXECUTANDO, ESPERANDO ou TERMINADO
-        self.tempo_espera = 0 # milissegundos
+        self.id = Processo.id_estatico
+        Processo.id_estatico += 1
+        self.tempo_execucao = random.randint(1, 100)
+        self.estado = "PRONTO"      # PRONTO, EXECUTANDO, ESPERANDO ou TERMINADO
+        self.tempo_espera = 0
 
     def executa(self):
         if self.tempo_execucao > 0:
@@ -19,9 +21,6 @@ class Processo:
     
     def getId(self):
         return self.id
-
-    def setId(self, id):
-        self.id = id
 
     def setEstado(self, estado):
         if estado != "EXECUTANDO" and estado != "ESPERANDO" and estado != "TERMINADO":

@@ -1,20 +1,22 @@
 import time
 import random
-import processo
-import escalonador
 
 class Despachante:
-    def executar_processo(self, processo: processo.Processo):
-        while(processo.estado == "EXECUTANDO"):
-            
+    def __init__(self):
+        self.round_robin = 5
+
+    def executar_processo(self, processo):
+        tempo = 0
+        while(processo.estado == "EXECUTANDO" and tempo < self.round_robin):
+
             if processo.tempo_execucao == 0:
                 processo.estado = "TERMINADO"
                 break
 
-            processo.verificacao_entra_saida()
+            # processo.verificacao_entra_saida()
 
             if processo.estado == "ESPERANDO":
                 break
-            
+
             processo.executa()
-            time.sleep(1)
+            tempo += 1
