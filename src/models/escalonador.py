@@ -21,9 +21,10 @@ class Escalonador:
             self.fila_espera[0].tempo_espera -= 1
 
     def chamar_despachante(self, despachante):
-        self.fila_processos[0].estado = "EXECUTANDO"
-        despachante.executar_processo(self.fila_processos[0])
+        if len(self.fila_processos):
+            self.fila_processos[0].estado = "EXECUTANDO"
+            despachante.executar_processo(self.fila_processos[0])
         
     def add_fila_processo(self, processo, tipo_algoritimo: str):
         if(tipo_algoritimo == "FIFO"):
-            self.fila_processos.insert(0, processo)
+            self.fila_processos.append(processo)
