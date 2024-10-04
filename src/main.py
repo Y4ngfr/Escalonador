@@ -6,7 +6,7 @@ import sys
 import signal
 
 def handle_sigint(signum, frame):
-        print("Encerrando sistema...")
+        print("\nEncerrando sistema...")
         exit(0)
 
 if __name__ == "__main__":

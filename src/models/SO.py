@@ -13,7 +13,7 @@ class SO:
     def step(self):
         if random.randint(1, 100) < 21:
             processo = Processo()
-            self.escalonador.add_fila_processo(processo=processo)            
+            self.escalonador.add_fila_processo(processo=processo)
 
         print("Filas:")
         print("Processos: ", end="")
