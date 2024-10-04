@@ -6,18 +6,25 @@ class Processo:
         self.id = Processo.id_estatico
         Processo.id_estatico += 1
         self.tempo_execucao = random.randint(1, 30)
-        self.estado = "PRONTO"      # PRONTO, EXECUTANDO, ESPERANDO ou TERMINADO
+        self.estado = "PRONTO"
         self.tempo_espera = 0
 
     def executa(self):
         if self.tempo_execucao > 0:
             self.tempo_execucao -= 1
 
-    def verificacao_entrada_saida(self):
-        chance = random.randint(1, 100)
-        if(chance <= 30):
+    def verifica_entrada_saida(self):
+        if self.estado == "EXECUTANDO" and random.randint(1, 100) <= 30:
             self.estado = "ESPERANDO"
             self.tempo_espera = random.randint(1, 10)
+
+    def atualiza_estado(self):
+        if self.tempo_espera == 0 and self.estado != "EXECUTANDO":
+            self.setEstado("PRONTO")
+
+        if self.tempo_execucao == 0:
+            self.setEstado("TERMINADO")
+
     
     def getId(self):
         return self.id
@@ -26,13 +33,17 @@ class Processo:
         return self.estado
 
     def setEstado(self, estado):
-        if estado != "EXECUTANDO" and estado != "ESPERANDO" and estado != "TERMINADO":
+        if estado != "EXECUTANDO" and estado != "ESPERANDO" and estado != "TERMINADO" and estado != "PRONTO":
             print("Estado de processo inválido")
-        else:
-            self.estado = estado
+            return -1
+        self.estado = estado
+        return 0
     
     def getTempoExecucao(self):
         return self.tempo_execucao
     
     def setTempoExecucao(self, tempo_execucao):
         self.tempo_execucao = tempo_execucao
+
+    def getTempoEspera(self):
+        return self.tempo_espera

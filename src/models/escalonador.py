@@ -2,29 +2,46 @@ class Escalonador:
     def __init__(self) -> None:
         self.fila_processos = []
         self.fila_espera = []
-    
+        self.algoritmo = ""
+
     def atualiza_fila_processos(self):
         if len(self.fila_processos) > 0:
-            if self.fila_processos[0].estado == "ESPERANDO":
-                # Se o processo tiver esperando, removemos da lista de processos e 
-                # colocamos na lista de espera
-                self.fila_espera.append(fila_processos[0])
-                self.fila_processos.pop(0)
 
-            if self.fila_processos[0].estado == "TERMINADO":
-                # Se o processo tiver terminado, apenas o removemos da lista de 
-                # processos
-                self.fila_processos.pop(0)
+            aux = self.fila_processos[0]
+            self.fila_processos.pop(0)
+            self.fila_processos.append(aux)
+
+            for i, processo in enumerate(self.fila_processos):
+                if processo.getEstado() == "ESPERANDO": 
+                    self.fila_espera.append(processo)
+                    self.fila_processos.pop(i)
+                if processo.getEstado() == "TERMINADO":
+                    self.fila_processos.pop(i)
 
     def atualiza_fila_espera(self):
         if len(self.fila_espera) > 0:
-            self.fila_espera[0].tempo_espera -= 1
+            
+            aux = self.fila_espera[0]
+            self.fila_espera.pop(0)
+            self.fila_espera.append(aux)
 
-    def chamar_despachante(self, despachante):
-        if len(self.fila_processos):
-            self.fila_processos[0].estado = "EXECUTANDO"
-            despachante.executar_processo(self.fila_processos[0])
-        
-    def add_fila_processo(self, processo, tipo_algoritimo: str):
-        if(tipo_algoritimo == "FIFO"):
+            for i, processo in enumerate(self.fila_espera):
+                if processo.getEstado() == "PRONTO":
+                    self.fila_processos.append(processo)
+                    self.fila_espera.pop(i)
+
+    def inserir_entrada(self):
+        if len(self.fila_espera) > 0:
+            self.fila_espera[0].tempo_espera -= 1
+            self.fila_espera[0].atualiza_estado()
+
+    def add_fila_processo(self, processo):
+        if(self.algoritmo == "FIFO"):
             self.fila_processos.append(processo)
+
+    def setAlgoritmo(self, algoritmo):
+        if algoritmo != "FIFO":
+            print("Algoritmo inválido")
+            return -1
+        self.algoritmo = algoritmo
+        return 0
