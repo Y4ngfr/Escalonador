@@ -14,6 +14,8 @@ class Despachante:
             tempo < self.round_robin
         ):
             processo.executa()
-            processo.atualiza_estado()
+            if processo.getTempoExecucao() == 0:
+                processo.setEstado("TERMINADO")
             processo.verifica_entrada_saida()
             tempo += 1
+    

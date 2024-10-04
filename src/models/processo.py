@@ -14,16 +14,11 @@ class Processo:
             self.tempo_execucao -= 1
 
     def verifica_entrada_saida(self):
-        if self.estado == "EXECUTANDO" and random.randint(1, 100) <= 10:
+        if self.estado != "TERMINADO" and random.randint(1, 100) <= 10:
             self.estado = "ESPERANDO"
             self.tempo_espera = random.randint(1, 7)
 
-    def atualiza_estado(self):
-        if self.tempo_espera == 0 and self.estado != "EXECUTANDO":
-            self.setEstado("PRONTO")
 
-        if self.tempo_execucao == 0:
-            self.setEstado("TERMINADO")
 
     
     def getId(self):

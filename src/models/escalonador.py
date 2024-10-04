@@ -33,7 +33,8 @@ class Escalonador:
     def inserir_entrada(self):
         if len(self.fila_espera) > 0:
             self.fila_espera[0].tempo_espera -= 1
-            self.fila_espera[0].atualiza_estado()
+            if self.fila_espera[0].tempo_espera == 0:
+                self.fila_espera[0].setEstado("PRONTO")
 
     def add_fila_processo(self, processo):
         if(self.algoritmo == "FIFO"):
