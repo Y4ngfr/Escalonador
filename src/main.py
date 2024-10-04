@@ -4,6 +4,7 @@ from models.despachante import Despachante
 from models.SO import SO
 import sys
 import signal
+import time
 
 def handle_sigint(signum, frame):
         print("\nEncerrando sistema...")
@@ -20,5 +21,5 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, handle_sigint)
 
     while(True):
-        input()
+        time.sleep(1)
         so.step()

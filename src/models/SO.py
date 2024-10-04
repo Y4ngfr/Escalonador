@@ -16,26 +16,10 @@ class SO:
             self.escalonador.add_fila_processo(processo=processo)
 
         print("Filas:")
-        print("Processos: ", end="")
 
-        if len(self.escalonador.fila_processos) > 0:
-            for processo in reversed(self.escalonador.fila_processos):
-                if processo != self.escalonador.fila_processos[0]:
-                    print(f"(Id:{processo.getId()})[{processo.getTempoExecucao()}][{processo.getTempoEspera()}]({processo.getEstado()}) -> ", end="")
-                else:
-                    print(f"(Id:{processo.getId()})[{processo.getTempoExecucao()}][{processo.getTempoEspera()}](EXECUTANDO)")
-        else:
-            print("<Fila vazia>")
+        self.printa_fila(self.escalonador.fila_processos, nome_fila="Processos")
         
-        print("Espera: ", end="")
-        if len(self.escalonador.fila_espera) > 0:
-            for processo in reversed(self.escalonador.fila_espera):
-                if processo != self.escalonador.fila_espera[0]:
-                    print(f"(Id:{processo.getId()})[{processo.getTempoExecucao()}][{processo.getTempoEspera()}]({processo.getEstado()}) -> ", end="")
-                else:
-                    print(f"(Id:{processo.getId()})[{processo.getTempoExecucao()}][{processo.getTempoEspera()}]({processo.getEstado()})")
-        else:
-            print("<Fila vazia>")
+        self.printa_fila(self.escalonador.fila_espera, nome_fila="Espera")
         
         if len(self.escalonador.fila_processos) > 0:
             self.despachante.executar_processo(self.escalonador.fila_processos[0])
@@ -43,3 +27,16 @@ class SO:
         self.escalonador.inserir_entrada()
         self.escalonador.atualiza_fila_processos()
         self.escalonador.atualiza_fila_espera()
+
+    def printa_fila(self, fila, nome_fila):
+        print(f"{nome_fila}: ", end="")
+        
+        if len(fila) == 0:
+            print("<Fila vazia>")
+            return
+        
+        for processo in reversed(fila):
+            if processo != fila[0]:
+                print(f"(Id:{processo.getId()})[{processo.getTempoExecucao()}][{processo.getTempoEspera()}]({processo.getEstado()}) -> ", end="")
+                continue
+            print(f"(Id:{processo.getId()})[{processo.getTempoExecucao()}][{processo.getTempoEspera()}]({processo.getEstado()})")
