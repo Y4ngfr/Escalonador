@@ -1,11 +1,13 @@
 from models.escalonadorFIFO import EscalonadorFIFO
+from models.escalonadorSJF import EscalonadorSJF
 
 class AlgoritmoFactory: 
     def defineAlgoritimo(algoritmo):
-        if algoritmo.upper() == "FIFO":
+        algoritmo = algoritmo.upper()
+        if algoritmo == "FIFO":
             return EscalonadorFIFO
-        if algoritmo.upper() == "SJF":
-            return "NOT IMPLEMENTADO!"
+        if algoritmo == "SJF":
+            return EscalonadorSJF
         
         raise Exception("O algoritmo inserido é invalido.")
         

@@ -17,9 +17,6 @@ class Processo:
         if self.estado != "TERMINADO" and random.randint(1, 100) <= 10:
             self.estado = "ESPERANDO"
             self.tempo_espera = random.randint(1, 7)
-
-
-
     
     def getId(self):
         return self.id
