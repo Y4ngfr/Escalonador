@@ -1,6 +1,5 @@
+from factory.algoritmoFactory import AlgoritmoFactory
 from models.processo import Processo
-from models.escalonador import Escalonador
-from models.despachante import Despachante
 from models.SO import SO
 import sys
 import signal
@@ -11,12 +10,18 @@ def handle_sigint(signum, frame):
         exit(0)
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        so = SO(sys.argv[1])
-    else:
-        so = SO("FIFO")
-
-    print(f"Algoritmo: {so.escalonador.algoritmo}", end="\n\n")
+    try:
+        algoritmo = input("Insira o Algoritmo: ")
+        algoritmo = AlgoritmoFactory.defineAlgoritimo(algoritmo=algoritmo)
+    except Exception as e:
+        print(e)
+        exit()
+        
+    so = SO(algoritmo=algoritmo)
+    
+    so.escalonador.setAlgoritmo()
+    
+    print(f"Algoritmo: {so.escalonador.getAlgoritmo()}", end="\n\n")
 
     signal.signal(signal.SIGINT, handle_sigint)
 

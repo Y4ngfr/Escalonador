@@ -1,4 +1,3 @@
-from models.escalonador import Escalonador
 from models.despachante import Despachante
 from models.processo import Processo
 import random
@@ -6,9 +5,7 @@ import random
 class SO:
     def __init__(self, algoritmo):
         self.despachante = Despachante()
-        self.escalonador = Escalonador()
-        if self.escalonador.setAlgoritmo(algoritmo) < 0:
-            self.escalonado.setAlgoritmo("FIFO")
+        self.escalonador = algoritmo()
 
     def step(self):
         if random.randint(1, 100) < 21:
