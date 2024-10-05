@@ -1,7 +1,6 @@
 from factory.algoritmoFactory import AlgoritmoFactory
 from models.processo import Processo
 from models.SO import SO
-import sys
 import signal
 import time
 
@@ -26,7 +25,7 @@ if __name__ == "__main__":
     
     so.escalonador.setAlgoritmo()
     
-    print(f"Algoritmo: {so.escalonador.getAlgoritmo()}", end="\n\n")
+    print(f"Algoritmo selecionado: {so.escalonador.getAlgoritmo()}", end="\n\n")
 
     signal.signal(signal.SIGINT, handle_sigint)
 
