@@ -11,6 +11,11 @@ def handle_sigint(signum, frame):
 
 if __name__ == "__main__":
     try:
+        print("-"*14)
+        print("| algoritmos |")
+        print("| FIFO - SJF |")
+        print("-"*14)
+        
         algoritmo = input("Insira o Algoritmo: ")
         algoritmo = AlgoritmoFactory.defineAlgoritimo(algoritmo=algoritmo)
     except Exception as e:
