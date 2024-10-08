@@ -10,19 +10,20 @@ class Escalonador(ABC):
         return self.algoritmo    
 
     def atualiza_fila_processos(self):
-        if len(self.fila_processos) > 0:
+        if self._verifica_fila_sem_item(self.fila_processos):
+            return
+        
+        aux = self.fila_processos[0]
+        self.fila_processos.pop(0)
+        self.fila_processos.append(aux)
 
-            aux = self.fila_processos[0]
-            self.fila_processos.pop(0)
-            self.fila_processos.append(aux)
-
-            for i, processo in enumerate(self.fila_processos):
-                if processo.getEstado() == "ESPERANDO": 
-                    self.fila_espera.append(processo)
-                    self.fila_processos.pop(i)
-                    
-                if processo.getEstado() == "TERMINADO":
-                    self.fila_processos.pop(i)
+        for i, processo in enumerate(self.fila_processos):
+            if processo.getEstado() == "ESPERANDO": 
+                self.fila_espera.append(processo)
+                self.fila_processos.pop(i)
+                
+            if processo.getEstado() == "TERMINADO":
+                self.fila_processos.pop(i)
 
     def atualiza_fila_espera(self):
         if self._verifica_fila_sem_item(self.fila_espera):
@@ -34,12 +35,13 @@ class Escalonador(ABC):
         
         for i, processo in enumerate(self.fila_espera):
             if processo.getEstado() == "PRONTO":
-                self.fila_processos.append(processo)
+                self.add_fila_processo(processo=processo)
                 self.fila_espera.pop(i)
 
     def inserir_entrada(self):
         if self._verifica_fila_sem_item(self.fila_espera):
             return 
+        
         self.fila_espera[0].tempo_espera -= 1
         if self.fila_espera[0].tempo_espera == 0:
             self.fila_espera[0].setEstado("PRONTO")

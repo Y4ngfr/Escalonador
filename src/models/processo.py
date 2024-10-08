@@ -8,7 +8,9 @@ class Processo:
         self.tempo_execucao = random.randint(1, 30)
         self.estado = "PRONTO"
         self.tempo_espera = 0
-
+        # a ideia é quanto maior o numero da prioridade, mais prioritario ele é
+        self.prioridade = self.tempo_execucao - 30 # Atributo desconsiderado no FIFO
+        
     def executa(self):
         if self.tempo_execucao > 0:
             self.tempo_execucao -= 1
@@ -39,3 +41,10 @@ class Processo:
 
     def getTempoEspera(self):
         return self.tempo_espera
+    
+    def getPrioridade(self):
+        return self.prioridade
+    
+    def setPrioridade(self, prioridade):
+        self.prioridade =  prioridade
+        

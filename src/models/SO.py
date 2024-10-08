@@ -6,9 +6,9 @@ class SO:
     def __init__(self, algoritmo):
         self.despachante = Despachante()
         self.escalonador = algoritmo()
-
+    
     def step(self):
-        if random.randint(1, 100) < 21:
+        if random.randint(1, 100) < 70:
             processo = Processo()
             self.escalonador.add_fila_processo(processo=processo)
 
@@ -32,7 +32,7 @@ class SO:
             print("<Fila vazia>")
             return
         
-        for processo in reversed(fila):
+        for processo in fila:
             if processo != fila[0]:
                 print(f"(Id:{processo.getId()})[{processo.getTempoExecucao()}][{processo.getTempoEspera()}]({processo.getEstado()}) -> ", end="")
                 continue
