@@ -26,6 +26,20 @@ git clone https://github.com/Y4ngfr/Escalonador.git
 Por fim basta executar o arquivo main.py:
 python3 src/main.py
 
+# Executando
+
+No inicio da execução do programa, deve-se selecionar o algoritmo desejado (entre FCFS e SJF). Após isso, precione enter para avançar um passo na execução do programa.
+A cada passo o programa fará internamente as seguintes ações: 
+    . criará um novo processo em 69% das vezes
+    . adicionará o processo na fila de processos
+    . irá imprimir na tela a fila de processos e a fila de espera
+    . irá executar o primeiro processo da fila (caso haja)
+    . irá "alimentar" a entrada para o primeiro processo da fila de entrada
+    . irá atualizar a fila de processos
+    . irá atualizar a fila de espera
+Importante mencionar que a impressão das filas segue o padrão:
+IdProcesso(x0)Prioridade(x1)TempoExecução[x2]TempoEspera[x3]Estado(x4)
+
 # Arquitetura
 
 A arquitetura é composta essencialmente por 4 contextos principais: Escalonador, Processo, SO e Despachante
@@ -53,3 +67,10 @@ Ele é implementado na classe SO, e possui um escalonador e um despachante, que 
 
 O despachante é responsável por encapsular o contexto onde o processo é executado.
 Depois que um processo é escolhido pelo escalonador (primeiro da fila), o despchante é chamado, enviando como parâmetro o processo em questão. O despachante então tem a função principal de alocar um quantum para o processo e garantir que ele seja executado até esse tempo acabar. 
+
+# Estudo de Caso
+
+Foi realizado um teste com cada algoritmo para comparar o desempenho entre os dois.
+Ambos foram submetidos ao seguinte conjunto de processos:
+
+![alt text](image.png)
