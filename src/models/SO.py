@@ -15,7 +15,6 @@ class SO:
         print("Filas:")
 
         self.printa_fila(self.escalonador.fila_processos, nome_fila="Processos")
-        
         self.printa_fila(self.escalonador.fila_espera, nome_fila="Espera")
         
         if len(self.escalonador.fila_processos) > 0:
@@ -32,7 +31,7 @@ class SO:
             print("<Fila vazia>")
             return
         
-        for processo in fila:
+        for processo in reversed(fila):
             if processo != fila[0]:
                 print(f"(Id:{processo.getId()})[{processo.getTempoExecucao()}][{processo.getTempoEspera()}]({processo.getEstado()}) -> ", end="")
                 continue

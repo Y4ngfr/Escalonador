@@ -1,6 +1,6 @@
 from abstratos.EscalonadorAbstrato import Escalonador
 
-class EscalonadorFIFO(Escalonador):
+class EscalonadorFCFS(Escalonador):
     def __init__(self):
         super().__init__()
         self.setAlgoritmo()
@@ -9,4 +9,4 @@ class EscalonadorFIFO(Escalonador):
         self.fila_processos.append(processo)
     
     def setAlgoritmo(self):
-        self.algoritmo = "FIFO"
+        self.algoritmo = "FCFS"

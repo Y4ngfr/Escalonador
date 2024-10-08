@@ -4,18 +4,27 @@ import random
 class Despachante:
     def __init__(self):
         self.round_robin = 5
+        self.tempo = 0
 
     def executar_processo(self, processo):
-        processo.setEstado("EXECUTANDO")
-        tempo = 0
+        if random.randint(1, 100) <= 30:
+            processo.setEstado("ESPERANDO")
+            processo.tempo_espera = random.randint(1, 3)
+            self.tempo = 0
+        else:
+            processo.setEstado("EXECUTANDO")
 
-        while(  
-            processo.estado == "EXECUTANDO" and
-            tempo < self.round_robin
+        if(  
+            processo.getEstado() == "EXECUTANDO" and
+            self.tempo < self.round_robin
         ):
             processo.executa()
-            if processo.getTempoExecucao() == 0:
-                processo.setEstado("TERMINADO")
-            processo.verifica_entrada_saida()
-            tempo += 1
-    
+            self.tempo += 1
+
+        if processo.getTempoExecucao() == 0:
+            processo.setEstado("TERMINADO")
+            self.tempo = 0
+
+        elif self.tempo == self.round_robin:
+            processo.setEstado("PRONTO")
+            self.tempo = 0

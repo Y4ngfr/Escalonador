@@ -1,11 +1,11 @@
-from models.escalonadorFIFO import EscalonadorFIFO
+from models.escalonadorFCFS import EscalonadorFCFS
 from models.escalonadorSJF import EscalonadorSJF
 
 class AlgoritmoFactory: 
     def defineAlgoritimo(algoritmo):
         algoritmo = algoritmo.upper()
-        if algoritmo == "FIFO":
-            return EscalonadorFIFO
+        if algoritmo == "FCFS":
+            return EscalonadorFCFS
         if algoritmo == "SJF":
             return EscalonadorSJF
         

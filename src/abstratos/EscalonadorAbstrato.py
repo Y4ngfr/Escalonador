@@ -14,8 +14,10 @@ class Escalonador(ABC):
             return
         
         aux = self.fila_processos[0]
-        self.fila_processos.pop(0)
-        self.fila_processos.append(aux)
+
+        if aux.getEstado() != "EXECUTANDO":
+            self.fila_processos.pop(0)
+            self.fila_processos.append(aux)
 
         for i, processo in enumerate(self.fila_processos):
             if processo.getEstado() == "ESPERANDO": 

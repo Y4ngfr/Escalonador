@@ -12,7 +12,7 @@ if __name__ == "__main__":
     try:
         print("-"*14)
         print("| algoritmos |")
-        print("| FIFO - SJF |")
+        print("| FCFS - SJF |")
         print("-"*14)
         
         algoritmo = input("Insira o Algoritmo: ")
@@ -22,7 +22,6 @@ if __name__ == "__main__":
         exit()
         
     so = SO(algoritmo=algoritmo)
-    
     so.escalonador.setAlgoritmo()
     
     print(f"Algoritmo selecionado: {so.escalonador.getAlgoritmo()}", end="\n\n")
@@ -30,5 +29,6 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, handle_sigint)
 
     while(True):
-        time.sleep(1)
+        # time.sleep(1)
+        input()
         so.step()

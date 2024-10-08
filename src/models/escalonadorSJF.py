@@ -7,7 +7,6 @@ from abstratos.EscalonadorAbstrato import Escalonador
 
 """
 
-
 class EscalonadorSJF(Escalonador):
     def __init__(self):
         super().__init__()
@@ -25,7 +24,6 @@ class EscalonadorSJF(Escalonador):
         if executando != None:
             self.fila_processos.insert(0,executando) # joga pro inicio da lista para continuar executando
             
-
     def add_fila_processo(self, processo):
         self.fila_processos.append(processo)
         self.organiza_fila_processos()

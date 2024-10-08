@@ -15,10 +15,10 @@ class Processo:
         if self.tempo_execucao > 0:
             self.tempo_execucao -= 1
 
-    def verifica_entrada_saida(self):
-        if self.estado != "TERMINADO" and random.randint(1, 100) <= 10:
-            self.estado = "ESPERANDO"
-            self.tempo_espera = random.randint(1, 7)
+    # def verifica_entrada_saida(self):
+    #     if self.estado != "TERMINADO" and random.randint(1, 100) <= 10:
+    #         self.estado = "ESPERANDO"
+    #         self.tempo_espera = random.randint(1, 3)
     
     def getId(self):
         return self.id
