@@ -33,6 +33,6 @@ class SO:
         
         for processo in reversed(fila):
             if processo != fila[0]:
-                print(f"(Id:{processo.getId()})[{processo.getTempoExecucao()}][{processo.getTempoEspera()}]({processo.getEstado()}) -> ", end="")
+                print(f"({processo.getId()})({processo.getPrioridade()})[{processo.getTempoExecucao()}][{processo.getTempoEspera()}]({processo.getEstado()}) -> ", end="")
                 continue
-            print(f"(Id:{processo.getId()})[{processo.getTempoExecucao()}][{processo.getTempoEspera()}]({processo.getEstado()})")
+            print(f"({processo.getId()})({processo.getPrioridade()})[{processo.getTempoExecucao()}][{processo.getTempoEspera()}]({processo.getEstado()})")
