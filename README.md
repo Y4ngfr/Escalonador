@@ -73,4 +73,18 @@ Depois que um processo é escolhido pelo escalonador (primeiro da fila), o despc
 Foi realizado um teste com cada algoritmo para comparar o desempenho entre os dois.
 Ambos foram submetidos ao seguinte conjunto de processos:
 
+![alt text](tabela_processos.png)
+
+Ao final das duas execuções obtivemos os seguintes resultados:
+
+# Resultado FCFS
+
 ![alt text](image.png)
+
+tempo médio de turnaround: 138.5
+
+# Resultado SJF
+
+![alt text](image.png)
+
+tempo médio de turnaround: 143.5
