@@ -79,12 +79,12 @@ Ao final das duas execuções obtivemos os seguintes resultados:
 
 # Resultado FCFS
 
-![alt text](image.png)
+![alt text](resultado_fcfs.png)
 
 tempo médio de turnaround: 138.5
 
 # Resultado SJF
 
-![alt text](image.png)
+![alt text](resultado_sjf.png)
 
 tempo médio de turnaround: 143.5
