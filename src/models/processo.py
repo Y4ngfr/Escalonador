@@ -9,7 +9,7 @@ class Processo:
         self.estado = "PRONTO"
         self.tempo_espera = 0
         # a ideia é quanto maior o numero da prioridade, mais prioritario ele é
-        self.prioridade = self.tempo_execucao - 30 # Atributo desconsiderado no FIFO
+        self.prioridade = 30 - self.tempo_execucao # Atributo desconsiderado no FIFO
         
     def executa(self):
         if self.tempo_execucao > 0:
