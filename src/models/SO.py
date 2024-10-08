@@ -6,11 +6,15 @@ class SO:
     def __init__(self, algoritmo):
         self.despachante = Despachante()
         self.escalonador = algoritmo()
+        self.i =0
     
     def step(self):
-        if random.randint(1, 100) < 70:
+        # if random.randint(1, 100) < 70:
+        if self.i < 5:
             processo = Processo()
+            processo.tempo_execucao = self.i*3 + 7
             self.escalonador.add_fila_processo(processo=processo)
+        self.i += 1
 
         print("Filas:")
 
