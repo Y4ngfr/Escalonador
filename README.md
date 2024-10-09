@@ -87,4 +87,6 @@ tempo médio de turnaround: 138.5
 
 ![alt text](resultado_sjf.png)
 
-tempo médio de turnaround: 143.5
+tempo médio de turnaround: 96.6
+
+Podemos perceber que o tempo médio de turnaround é significativamente menor no algoritmo de SJF, isso ocorre pois os tempos de espera são reduzidos ao máximo adotando a estratégia do processo com menor tempo de execução executar primeiro. Porém vale destacar que esse algoritmo possui alguns problemas em relação ao algoritmo anterior, pois processos que possuem um elevado tempo de execução esperam muito mais que os outros, o que pode causar starvation. A forma de resolver isso é incrementar a prioridade dos algoritmos que estão esperando a mais tempo. Porém isso adiciona uma complexidade a mais no algoritmo, pois a cada vez que as prioridades forem incrementadas teremos que percorrer a fila de processos quase inteiramente, o que não é necessário no algoritmo FCSF. Também é bom mencionar que adotar uma estratégia de round-robin no algoritmo de SJF pode torna-lo confuso de entender e bem menos eficiente que o algoritmo de FCFS.
