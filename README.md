@@ -106,6 +106,4 @@ tempo médio de turnaround: 96.6
 
 ## Análise dos resultados
 
-Os testes revelam que o tempo médio de turnaround no algoritmo SJF é significativamente menor em comparação com o FCFS. Isso ocorre porque o SJF prioriza processos com menor tempo de execução, otimizando o uso da CPU. No entanto, o SJF pode causar starvation em processos com tempos de execução longos, que podem ficar indefinidamente na fila.
-
-Uma solução para o problema de starvation é incrementar a prioridade de processos que esperam por muito tempo, embora isso adicione complexidade ao algoritmo.
+Os testes revelam que o tempo médio de turnaround no algoritmo SJF é significativamente menor em comparação com o FCFS. Isso ocorre porque o SJF prioriza processos com menor tempo de execução, otimizando o uso da CPU. No entanto, o SJF pode causar starvation em processos com tempos de execução longos, que podem ficar indefinidamente na fila. A solução implementada para o problema de starvation é incrementar a prioridade de processos que esperam por muito tempo, embora isso adicione complexidade ao algoritmo, no caso deste simulador é necessário percorrer a fila de processos para incrementar a prioridade de cada processo, o que não é necessário no algoritmo FCFS.
