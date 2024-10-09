@@ -4,15 +4,16 @@ O **Escalonador** é um simulador de escalonador de processos de um sistema oper
 Um escalonador de processos é um componente de sistemas operacionais modernos que gerencia uma fila de processos com base em algum método ou algoritmo.
 Os principais são: 
 
-    - **First Come First Served (FCFS)**: a prioridade se dá de acordo com a ordem de chegada de cada processo, nesse caso, o primeiro a chegar é o primeiro a ser "servido".
+- **First Come First Served (FCFS)**: a prioridade se dá de acordo com a ordem de chegada de cada processo, nesse caso, o primeiro a chegar é o primeiro a ser "servido".
 
-    - **Shortest Job First (SJF)**: a prioridade se dá de acordo com o tempo de execução total do processo, nesse caso, o processo com menor tempo de execução será o primeiro a executar.
+- **Shortest Job First (SJF)**: a prioridade se dá de acordo com o tempo de execução total do processo, nesse caso, o processo com menor tempo de execução será o primeiro a executar.
 
-    - Shortest Remaining Time First (SRT)
+- Shortest Remaining Time First (SRT)
 
-    - **Roud-robin**: O escalonador define um quantum (fatia de tempo) para cada processo. Quando o quantum termina, o processo deve ceder a CPU para outro.
+- **Roud-robin**: O escalonador define um quantum (fatia de tempo) para cada processo. Quando o quantum termina, o processo deve ceder a CPU para outro.
 
-    - Randomic
+- Randomic
+
 O **Escalonador** implementa os algoritmos FCFS e SJF com round-robin.
 
 # Pré-requisitos
