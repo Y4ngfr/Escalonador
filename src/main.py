@@ -17,11 +17,15 @@ if __name__ == "__main__":
         
         algoritmo = input("Insira o Algoritmo: ")
         algoritmo = AlgoritmoFactory.defineAlgoritimo(algoritmo=algoritmo)
+        
+        round_robin = int(input("Insira o round robin: ")) 
+        if round_robin <= 0: 
+            round_robin = 1
     except Exception as e:
         print(e)
         exit()
         
-    so = SO(algoritmo=algoritmo)
+    so = SO(algoritmo=algoritmo, round_robin=round_robin)
     so.escalonador.setAlgoritmo()
     
     print(f"Algoritmo selecionado: {so.escalonador.getAlgoritmo()}", end="\n\n")

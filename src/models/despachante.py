@@ -2,8 +2,8 @@ import time
 import random
 
 class Despachante:
-    def __init__(self):
-        self.round_robin = 5
+    def __init__(self, round_robin):
+        self.round_robin = round_robin
         self.tempo = 0
 
     def executar_processo(self, processo):

@@ -3,8 +3,8 @@ from models.processo import Processo
 import random
 
 class SO:
-    def __init__(self, algoritmo):
-        self.despachante = Despachante()
+    def __init__(self, algoritmo, round_robin):
+        self.despachante = Despachante(round_robin)
         self.escalonador = algoritmo()
         self.i =0
     
