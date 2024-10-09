@@ -26,6 +26,20 @@ git clone https://github.com/Y4ngfr/Escalonador.git
 Por fim basta executar o arquivo main.py:
 python3 src/main.py
 
+# Executando
+
+No inicio da execução do programa, deve-se selecionar o algoritmo desejado (entre FCFS e SJF). Após isso, precione enter para avançar um passo na execução do programa.
+A cada passo o programa fará internamente as seguintes ações: 
+    . criará um novo processo em 69% das vezes
+    . adicionará o processo na fila de processos
+    . irá imprimir na tela a fila de processos e a fila de espera
+    . irá executar o primeiro processo da fila (caso haja)
+    . irá "alimentar" a entrada para o primeiro processo da fila de entrada
+    . irá atualizar a fila de processos
+    . irá atualizar a fila de espera
+Importante mencionar que a impressão das filas segue o padrão:
+IdProcesso(x0)Prioridade(x1)TempoExecução[x2]TempoEspera[x3]Estado(x4)
+
 # Arquitetura
 
 A arquitetura é composta essencialmente por 4 contextos principais: Escalonador, Processo, SO e Despachante
@@ -53,3 +67,26 @@ Ele é implementado na classe SO, e possui um escalonador e um despachante, que 
 
 O despachante é responsável por encapsular o contexto onde o processo é executado.
 Depois que um processo é escolhido pelo escalonador (primeiro da fila), o despchante é chamado, enviando como parâmetro o processo em questão. O despachante então tem a função principal de alocar um quantum para o processo e garantir que ele seja executado até esse tempo acabar. 
+
+# Estudo de Caso
+
+Foi realizado um teste com cada algoritmo para comparar o desempenho entre os dois.
+Ambos foram submetidos ao seguinte conjunto de processos:
+
+![alt text](tabela_processos.png)
+
+Ao final das duas execuções obtivemos os seguintes resultados:
+
+# Resultado FCFS
+
+![alt text](resultado_fcfs.png)
+
+tempo médio de turnaround: 138.5
+
+# Resultado SJF
+
+![alt text](resultado_sjf.png)
+
+tempo médio de turnaround: 96.6
+
+Podemos perceber que o tempo médio de turnaround é significativamente menor no algoritmo de SJF, isso ocorre pois os tempos de espera são reduzidos ao máximo adotando a estratégia do processo com menor tempo de execução executar primeiro. Porém vale destacar que esse algoritmo possui alguns problemas em relação ao algoritmo anterior, pois processos que possuem um elevado tempo de execução esperam muito mais que os outros, o que pode causar starvation. A forma de resolver isso é incrementar a prioridade dos algoritmos que estão esperando a mais tempo. Porém isso adiciona uma complexidade a mais no algoritmo, pois a cada vez que as prioridades forem incrementadas teremos que percorrer a fila de processos quase inteiramente, o que não é necessário no algoritmo FCSF. Também é bom mencionar que adotar uma estratégia de round-robin no algoritmo de SJF pode torna-lo confuso de entender e bem menos eficiente que o algoritmo de FCFS.
